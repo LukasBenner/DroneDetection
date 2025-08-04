@@ -2,3 +2,7 @@ rfdetr==1.2.1
 supervision==0.26.1
 roboflow
 tensorboard
+scikit-learn
+funcy
+argparse
+scikit-multilearn
