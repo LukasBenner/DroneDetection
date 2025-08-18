@@ -1,4 +1,4 @@
-from rfdetr import RFDETRMedium
+from rfdetr import RFDETRSmall
 import os
 import sys
 import argparse
@@ -10,10 +10,10 @@ import time
 from collections import deque
 
 
-def load_model(checkpoint_path="./checkpoints/checkpoint_best_ema.pth"):
+def load_model(checkpoint_path="./checkpoints/small_checkpoint_best_ema.pth"):
     """Load and optimize the RF-DETR model for inference."""
     print(f"Loading model from: {checkpoint_path}")
-    model = RFDETRMedium(pretrain_weights=checkpoint_path)
+    model = RFDETRSmall(pretrain_weights=checkpoint_path)
     model.optimize_for_inference()
     print("Model loaded and optimized for inference.")
     return model
@@ -263,8 +263,8 @@ def main():
     parser.add_argument("--camera", "-cam", type=int, default=0,
                        help="Camera device ID (default: 0)")
     parser.add_argument("--checkpoint", "-c", 
-                       default="./checkpoints/checkpoint_best_ema.pth",
-                       help="Path to model checkpoint (default: ./checkpoints/checkpoint_best_ema.pth)")
+                       default="./checkpoints/small_checkpoint_best_ema.pth",
+                       help="Path to model checkpoint (default: ./checkpoints/small_checkpoint_best_ema.pth)")
     parser.add_argument("--threshold", "-t", type=float, default=0.5,
                        help="Detection confidence threshold (default: 0.5)")
     parser.add_argument("--no-confidence", action="store_true",
